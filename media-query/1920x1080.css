@@ -1,0 +1,118 @@
+@media screen and (min-width: 1920px) and (min-height: 1080px) {   
+
+
+    a {
+         font-size: x-large;
+   }
+
+    nav a {
+        margin: 26px;
+    }
+
+    /* Hero Section -------------------------------*/
+    .image {
+        max-width: 1560px;
+        gap: 120px;
+    }
+
+    .herodescription {
+        max-width: 850px;
+    }
+
+    .hero-photo {
+        flex-basis: 460px;
+        max-width: 460px;
+    }
+    
+    .yellow1, .white1 {
+        font-size: 22px;
+    }
+    
+    .yellow2 {
+        font-size: 115px;
+    }
+    
+    .yellow3, .white2, .yellow4 {
+        font-size: 22px;
+    }
+
+    /* About Section -------------------------------*/
+
+    .about-main img {
+        width: 450px;
+    }
+
+    .about-text h1 {
+        font-size: 320%;
+    }
+
+    .about-text p {
+        font-size: 130%;
+    }
+
+    /* Hobbies Section -------------------------------*/
+    .hobbies {
+        height: 80vh;
+    }
+
+    .hobbies h1 {
+        font-size: 350%;
+    }
+
+    .hob {
+        height: 600px;
+    }
+
+    .hob h2 {
+        font-size: 32px;
+    }
+
+    .hob p {
+        font-size: 23px;
+    }
+
+    /* Latest Updates -------------------------------*/
+    .latestupdates {
+        height: 77vh;
+    }
+
+    .latestupdates h1 {
+        font-size: 350%;
+    }
+
+    /* My Skills Section -------------------------------*/
+    .myskills {
+        height: 70vh;
+    }
+
+    .myskills h1 {
+        font-size: 350%;
+    }
+
+    /* Gallery Section -------------------------------*/
+    .gallery {
+        height: 105vh;
+    }
+
+    .gallery h1 {
+        font-size: 350%;
+    }
+
+    /* Contact Me Section -------------------------------*/
+    .contact {
+        width: 100%;
+        height: 45vh;
+    }
+
+    .contact h1 {
+        right: 25%;
+        margin-top: 90px;
+        font-size: 350%;
+    }
+
+    /* Social Media Icons */
+    .socialicons{
+        right: 27%;
+        bottom: 54%;
+    }
+}

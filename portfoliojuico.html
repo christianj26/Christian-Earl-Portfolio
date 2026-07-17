@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Earl's Portfolio</title>
+    <link rel="stylesheet" href="portfoliojuicostyle.css">
+
+    <link rel="stylesheet" href="media-query/1920x1080.css">
+    <link rel="stylesheet" href="media-query/2560x1440.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Christian Earl</h1>
+        </div>
+
+        <nav>
+            <ul class="nav">
+                <li><a href="#image" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class= "heroimage" id="heroimage">
+        <div class="image" id="image" data-aos="fade-down">
+            <div class="herodescription" data-aos="fade-right">
+                <p><span class="heroyellow yellow1">HELLO</span>
+                    <span class="herowhite white1">,&nbsp;MY NAME IS</span></p>
+
+                <p><span class= "heroyellow yellow2">Christian Earl</span></p>
+
+                <p><span class="heroyellow yellow3">GRAPHIC</span>
+                    <span class="herowhite white2">&nbsp;AND&nbsp;</span>
+                    <span class="heroyellow yellow4">DATABASE DESIGNER</span></p>
+            </div>
+            <div class="hero-photo" data-aos="fade-left">
+                <img src="img/herosection_solopic.JPG" alt="Christian Earl Juico">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class= "about" id="about">
+        <div class="about-main">
+            <img src="img/aboutpicture.jpg" alt="">
+            <div class="about-text" data-aos="fade-left">
+            <h1>About Me</h1>
+                <p>I'm Christian Earl Juico, a highly motivated and versatile professional with a Bachelor's degree in Information Technology. I'm passionate about technology and creative design, and I bring a unique blend of skills as a programmer, graphic designer, and database designer. With a keen eye for detail and a commitment to delivering exceptional results, I thrive on turning ideas into reality through innovative solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section class= "contact" id="contact">
+           <h1 data-aos="fade-left">Contact Me</h1>
+
+           <p data-aos="fade-left">+63 987-258-2552<br>
+              +63 579-698-8969
+        </p>
+
+        <div class="socialicons" data-aos="fade-left">
+           <a href="https://www.facebook.com/" class="sbtn aFacebook" target="_blank">
+                <img src="img/icons/iconfacebook.png" alt="">
+           </a>
+
+           <a href="https://www.instagram.com/" class="sbtn aInstagram" target="_blank">
+                <img src="img/icons/iconinstagram.png" alt="">
+            </a>
+
+            <a href="https://twitter.com/" class="sbtn aTwitter" target="_blank">
+                <img src="img/icons/iconx.png" alt="">
+            </a>
+
+            <a href="https://www.linkedin.com/" class="sbtn aLinkedin" target="_blank">
+                <img src="img/icons/iconlinkedin.png" alt="">
+            </a>
+        </div>
+
+            <form class="form-input">
+                <input class="in ione" type="text" id="fname" name="fname" placeholder="Enter your Name" required>
+                <br>
+                <input class="in itwo" type="text" id="lname" name="lname" placeholder="Enter a valid email address" required>
+                <br>
+                <input class="in ithree" type="text" id="lname" name="lname" placeholder="Message" required>
+
+                <button class="btnsubmit">SUBMIT</button>
+            </form>
+
+    </section> 
+
+      <!-- Footer Section -->
+      <footer>
+            <p>© 2023 - 2024  Christian Earl Santos Juico | All Rights Reserved</p>
+      </footer>
+
+      
+    <!-- Scripts -->
+    <script>
+        const navLinks = document.querySelectorAll('.nav a');
+        const header = document.querySelector('header');
+        const sections = [...navLinks]
+            .map(link => document.getElementById(link.getAttribute('href').substring(1)))
+            .filter(Boolean);
+
+        const setActiveLink = () => {
+            header.classList.toggle('scrolled', window.scrollY > 10);
+
+            let currentSection = sections[0];
+            const scrollPosition = window.scrollY + 140;
+            const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+
+            sections.forEach(section => {
+                if (scrollPosition >= section.offsetTop) {
+                    currentSection = section;
+                }
+            });
+
+            if (isAtBottom) {
+                currentSection = sections[sections.length - 1];
+            }
+
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${currentSection.id}`);
+            });
+        };
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', setActiveLink);
+        setActiveLink();
+    </script> 
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+      AOS.init({
+        duration: 3000,
+        once: true,
+      });
+    </script>
+
+</body>
+</html>

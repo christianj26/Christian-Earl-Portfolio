@@ -1,0 +1,668 @@
+@font-face {
+    font-family: nourd_bold;
+    src: url(fonts/nourd_bold.ttf);
+}
+
+@font-face {
+    font-family: nourd_medium;
+    src: url(fonts/nourd_medium.ttf);
+}
+
+@font-face {
+    font-family: nourd_semi_bold;
+    src: url(fonts/nourd_semi_bold.ttf);
+}
+
+@font-face {
+    font-family: nourd_heavy;
+    src: url(fonts/nourd_heavy.ttf);
+}
+
+@font-face {
+    font-family: nourd_regular;
+    src: url(fonts/nourd_regular.ttf);
+}
+
+@font-face {
+    font-family: dmsans_regular;
+    src: url(fonts/dmsans_regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden; 
+  }
+
+/* Header Section -------------------------------*/
+header{
+    height: 75px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 30px;
+    transition: box-shadow 0.3s ease;
+}
+
+header.scrolled {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.logo {
+    color: #F6F629;
+    font-family: nourd_bold;
+}
+
+.logo h1 {
+    font-size: 34px;
+}
+
+.nav {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.nav li {
+    display: flex;
+}
+
+header nav a {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 10px 0;
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 0;
+    transition: color 0.3s ease;
+}
+
+header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0;
+    height: 3px;
+    background-color: #F6F629;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+header nav a:hover,
+header nav a.active {
+    color: #F6F629;
+    background-color: transparent;
+}
+
+header nav a:hover::after,
+header nav a.active::after {
+    width: 100%;
+}
+
+a {
+    margin: 15px;
+    font-family: nourd_medium;
+    font-size: larger;
+    color:  #F6F629;
+    height: 50px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+}
+
+a:hover {
+    background-color: #F6F629;
+    color: black;
+    border-radius: 20px;
+}
+
+.heroimage {
+    background: black;
+}
+
+.image {
+    width: 100%;
+    height: 85vh;
+    min-height: 680px;
+    margin: 0 auto;
+    padding: 75px 70px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 110px;
+    background-color: black;
+}
+
+/* Hero Section -------------------------------*/
+.herodescription {
+    flex: 0 1 760px;
+    max-width: 760px;
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.46);
+}
+
+.hero-photo {
+    flex: 0 0 420px;
+    max-width: 420px;
+    position: relative;
+    padding: 14px;
+    border: 3px solid #F6F629;
+    border-radius: 18px;
+    background: #101010;
+    box-shadow: 18px 18px 0 rgba(246, 246, 41, 0.16),
+                0 24px 45px rgba(0, 0, 0, 0.55);
+}
+
+.hero-photo::before {
+    content: "";
+    position: absolute;
+    inset: -14px 18px 18px -14px;
+    border: 2px solid rgba(246, 246, 41, 0.45);
+    border-radius: 18px;
+    z-index: -1;
+}
+
+.hero-photo img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.heroyellow {
+    color: #F6F629;
+}
+
+.herowhite {
+    color: white;
+}
+
+.yellow1, .white1 {
+    font-family: nourd_bold;
+    font-size: 20px;
+}
+
+.yellow2 {
+    font-family: nourd_bold;
+    font-size: 100px;
+}
+
+.yellow3, .white2, .yellow4 {
+    font-family: nourd_heavy;
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+
+@media screen and (max-width: 1100px) {
+    .image {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 35px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .yellow2 {
+        font-size: 70px;
+    }
+
+    .hero-photo {
+        width: 70%;
+        flex-basis: auto;
+        max-width: 380px;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .image {
+        padding: 110px 20px 0;
+    }
+
+    .yellow2 {
+        font-size: 48px;
+    }
+
+    .yellow3, .white2, .yellow4 {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    .hero-photo {
+        width: 100%;
+    }
+}
+
+
+/* About Section -------------------------------*/
+.about {
+    width: 100%;
+    background-color: black;
+    padding: 100px 0px;  
+}
+
+.about-main {
+    width: 1130px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 2;
+}
+.about-main img {
+    height: auto;
+    width: 430px;
+    margin: 100px;
+    border-radius: 50%;
+}
+
+.about-text {
+    text-align: left;
+}
+
+.about-text h1 {
+    font-family: nourd_bold;
+    color: #F6F629; 
+    font-size: 300%;
+}
+
+.about-text p {
+    font-family: nourd_bold;
+    color: white;
+    font-size: 120%;
+}
+
+/* Hobbies Section -------------------------------*/
+.hobbies {
+    width: 100%;
+    height: 80vh;
+    background-color: #F6F629;
+}
+
+.hobbies h1 {
+    text-align: center;
+    padding: 50px; 
+    font-family: nourd_bold;
+    font-size: 300%;
+}
+
+.hobbies-main {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.hob {
+    width: 300px;
+    height: 530px;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    background-color: #141414;
+    border-radius: 5%;
+}
+
+.hob h2 {
+    font-family: nourd_bold;
+    font-size: 30px;
+    color: #F6F629;
+    margin-top: 15px;
+}
+
+.hobbies img {
+    max-width: 50%;
+    position: relative;
+}
+
+.hobbox3 img {
+    margin-top: 20px;
+    max-width: 60%;
+}
+
+.hob p {
+    color: white;
+    font-size: 20px;
+    font-family: nourd_regular;
+    line-height: 2;
+    margin-top: 10px;
+}
+
+/* Latest Updates -------------------------------*/
+.latestupdates {
+    width: 100%;
+    height: 85vh;
+    background-color: black;
+}
+
+.latestupdates h1 {
+    text-align: center;
+    padding: 50px; 
+    font-family: nourd_bold;
+    font-size: 300%;
+    color: #F6F629;
+}
+
+.latestupdates img {
+    max-width: 100%;
+    position: relative;
+}
+
+.latestupdates-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.latestupdates-main a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    line-height: 2;
+    text-decoration: none;
+    border-radius: 5%;
+    font-weight: 100;
+}
+
+.latestupdates-main a:hover {
+    background-color: #F6F629;
+    color: black;
+}
+
+.latestupdates-main a:hover h2 {
+    color: black; /* Text color for h2 on hover */
+}
+
+.lat {
+    width: 400px;
+    height: 565px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: #141414;
+}
+
+.lat h2 {
+    font-family: nourd_bold;
+    font-size: 30px;
+    color: #F6F629;
+    line-height: 1;
+}
+
+.lat p {
+    font-size: 15px;
+    font-family: nourd_medium;
+    line-height: 2;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* My Skills Section -------------------------------*/
+.myskills {
+    width: 100%;
+    height: 80vh;
+    background-color: #F6F629;
+}
+
+.myskills h1 {
+    text-align: center;
+    padding: 50px; 
+    font-family: nourd_bold;
+    font-size: 300%;
+    color: black;
+}
+
+.myskills-main {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.skill {
+    width: 400px;
+    height: 515px;
+    margin: 10px;
+    text-align: center;
+    background-color: #141414;
+}
+
+.skill h2 {
+    font-family: nourd_bold;
+    font-size: 30px;
+    color: #F6F629;
+    margin-top: 10px;
+}
+
+.myskills img {
+    max-width: 100%;
+}
+
+.skill p {
+    color: white;
+    font-size: 15px;
+    font-family: nourd_medium;
+    line-height: 2;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+/* Gallery Section -------------------------------*/
+.gallery {
+    width: 100%;
+    height: 115vh;
+    background-color: black;
+}
+
+.gallery h1 {
+    text-align: center;
+    padding: 50px; 
+    font-family: nourd_bold;
+    font-size: 300%;
+    color: #F6F629;
+}
+
+.gallery-main1 {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.gallery-main2 {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+.gal {
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+    background-color: #141414;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    border: 3px solid;
+    border-color: #F6F629;
+}
+
+/* Gallery Individual Images -------------------------------*/
+.galbox1 img {
+    max-width: 214%;
+    position: absolute;
+    left: -55%;
+}
+
+.galbox2 img {
+    max-width: 135%;
+    position: absolute;
+    left: -17%;
+}
+
+.galbox3 img {
+    max-width: 131%;
+    position: absolute;
+    left: -13%;
+}
+
+.galbox4 img {
+    max-width: 154%;
+    position: absolute;
+    left: -28%;
+}
+
+.galbox5 img {
+    max-width: 180%;
+    position: absolute;
+    left: -39%;
+}
+
+.galbox6 img {
+    max-width: 170%;
+    position: absolute;
+    left: -0%;
+}
+
+/* Contact Me Section -------------------------------*/
+.contact {
+    width: 100%;
+    height: 50vh;
+    background-color: #F6F629;
+    position: relative;
+}
+
+.contact h1 {
+    position: absolute;
+    right: 25%;
+    margin-top: 90px;
+    font-family: nourd_bold;
+    font-size: 350%;
+    color: black;
+}
+
+.contact p {
+    position: absolute;
+    right: 30%;
+    margin-top: 350px;
+    font-family: nourd_heavy;
+    font-size: 150%;
+    color: black;
+}
+
+/* Social Media Icons */
+.socialicons{
+    position: absolute;
+    display: flex;
+    right: 27%;
+    bottom: 52%;
+}
+
+.socialicons a {
+    margin-right: -30px;
+}
+
+.aFacebook:hover, .aInstagram:hover, .aTwitter:hover, .aLinkedin:hover{
+    transform: scale(1.3);
+    transition: .3s;
+}
+
+.aFacebook img {
+    max-width: 35%;
+}
+
+.aInstagram img {
+    max-width: 35%;
+}
+
+.aTwitter img {
+    max-width: 35%;
+}
+
+.aLinkedin img {
+    max-width: 35%;
+}
+
+/* Client Input Section */ 
+.form-input input {
+    border: none;
+    border-bottom: 3px solid black;
+    padding: 5px;
+    font-size: 15px;
+    background: transparent; 
+    outline: none; 
+    width: 15%;
+    color: black;
+    margin-left: 400px;
+}
+
+.form-input input::placeholder {
+    font-family: dmsans_regular;
+    color: #5A5A5A; 
+}
+
+.ione {
+    margin-bottom: 15px;
+    margin-top: 130px;
+}
+
+.itwo {
+    margin-bottom: 80px;
+}
+
+.btnsubmit {
+    height: 40px;
+    width: 116px;
+    position: absolute;
+    top: 69%;
+    left: 21%;
+    background-color: black;
+    font-family: nourd_heavy;
+    font-size: 17px;
+    color: #F6F629;
+    border: none;
+    letter-spacing: 3px;
+}
+
+.btnsubmit:hover {
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+/* Footer Section -------------------------------*/
+footer {
+    width: 100%;
+    height: 4vh;
+    background-color: black;
+}
+
+footer p {
+    text-align: center;
+    font-family: nourd_bold;
+    padding: 10px;
+    font-size: 90%;
+    color: #F6F629;
+}

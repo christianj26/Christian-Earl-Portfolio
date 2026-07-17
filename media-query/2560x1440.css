@@ -1,0 +1,249 @@
+@media screen and (min-width: 2560px) and (min-height: 1440px){
+
+    a {
+        font-size: x-large;
+    }
+
+   nav a {
+        margin: 26px;
+   }
+
+    /* Hero Section -------------------------------*/
+    .image {
+        max-width: 1900px;
+        padding-left: 160px;
+        padding-right: 160px;
+        gap: 150px;
+    }
+
+    .herodescription {
+        max-width: 1100px;
+    }
+
+    .hero-photo {
+        flex-basis: 560px;
+        max-width: 560px;
+    }
+
+    .yellow1, .white1 {
+        font-size: 30px;
+    }
+
+    .yellow2 {
+        font-size: 160px;
+    }
+
+    .yellow3, .white2, .yellow4 {
+        font-size: 30px;
+    }
+
+
+    /* About Section -------------------------------*/
+    .about-main img {
+        width: 450px;
+    }
+
+    .about-text h1 {
+        font-size: 350%;
+    }
+
+    .about-text p {
+        font-family: nourd_bold;
+        color: white;
+        font-size: 120%;
+    }
+
+    /* Hobbies Section -------------------------------*/
+    .hobbies {
+        width: 100%;
+        height: 72vh;
+    }
+
+    .hobbies h1 {
+        font-size: 400%;
+    }
+
+    .hobbies-main {
+        display: flex;
+        justify-content: center;
+        gap: 100px;
+    }
+
+    .hob {
+        width: 400px;
+        height: 750px;
+        margin: 10px;
+        padding: 30px;
+        text-align: center;
+        background-color: #141414;
+        border-radius: 5%;
+    }
+
+    .hob h2 {
+        font-size: 40px;
+    }
+
+    .hobbox3 img {
+        padding-bottom: 5px;
+    }
+
+    .hob p {
+        font-size: 30px;
+    }
+
+    /* Latest Updates -------------------------------*/
+    .latestupdates {
+        width: 100%;
+        height: 73vh;
+    }
+
+    .latestupdates h1 {
+        font-size: 400%;
+    }
+
+    .lat {
+        width: 500px;
+        height: 760px;
+    }
+
+    .lat h2 {
+        font-size: 35px;
+    }
+
+    .lat p {
+        font-size: 21px;
+        margin-top: 12px;
+        margin-bottom: 10px;
+    }
+
+    /* My Skills Section -------------------------------*/
+    .myskills {
+        width: 100%;
+        height: 65vh;
+    }
+
+    .myskills h1 {
+        font-size: 400%;
+    }
+
+    .skill {
+        width: 500px;
+        height: 660px;
+    }
+
+    .skill h2 {
+        font-size: 35px;
+    }
+
+    .skill p {
+        font-size: 20px;
+    }
+
+    /* Gallery Section -------------------------------*/
+    .gallery {
+        width: 100%;
+        height: 102vh;
+    }
+
+    .gallery h1 {
+        font-size: 400%;
+    }
+
+    .gal {
+        width: 550px;
+        height: 550px;
+    }
+
+    /* Gallery Individual Images -------------------------------*/
+    .galbox4 img {
+        max-width: 200%; 
+    }
+
+    /* Contact Me Section -------------------------------*/
+    .contact {
+        width: 100%;
+        height: 45vh;
+    }
+
+    .contact h1 {
+        right: 25%;
+        margin-top: 120px;
+        font-size: 450%;
+    }
+
+    .contact p {
+        right: 30%;
+        margin-top: 490px;
+        font-size: 190%;
+    }
+
+    /* Social Media Icons */
+    .socialicons{
+        right: 27.5%;
+        bottom: 55%;
+        gap: 20px;
+    }
+
+    .aFacebook img {
+        max-width: 45%;
+    }
+
+    .aInstagram img {
+        max-width: 45%;
+    }
+
+    .aTwitter img {
+        max-width: 45%;
+    }
+
+    .aLinkedin img {
+        max-width: 45%;
+    }
+
+    /* Client Input Section */ 
+    .form-input input {
+        border-bottom: 4px solid black;
+        padding: 5px;
+        font-size: 25px;
+        width: 18%;
+        margin-left: 600px;
+        padding-top: 20px;
+    }
+
+    .form-input input::placeholder {
+        font-size: 23px;
+    }
+
+    .ione {
+        margin-bottom: 15px;
+        margin-top: 160px;
+    }
+
+    .itwo {
+        margin-bottom: 130px;
+    }
+
+    .btnsubmit {
+        height: 55px;
+        width: 140px;
+        top: 77%;
+        left: 23.5%;
+        font-size: 21px;
+        letter-spacing: 3px;
+    }
+
+    .btnsubmit:hover {
+        transform: scale(1.1);
+        transition: .3s;
+    }
+
+    /* Footer Section -------------------------------*/
+    footer {
+        width: 100%;
+        height: 3vh;
+    }
+
+    footer p {
+        font-size: 110%;
+    }
+}
