@@ -252,38 +252,63 @@ a:hover {
     width: 100%;
     background-color: black;
     padding: 100px 0px;  
+    min-height: 600px;
 }
 
 .about-main {
     width: 1130px;
     max-width: 95%;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     line-height: 2;
-}
-.about-main img {
-    height: auto;
-    width: 430px;
-    margin: 100px;
-    border-radius: 50%;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .about-text {
     text-align: left;
+    width: 100%;
 }
 
 .about-text h1 {
     font-family: nourd_bold;
     color: #F6F629; 
     font-size: 300%;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.about-text h1::after {
+    content: "";
+    flex: 0 1 180px;
+    height: 4px;
+    background-color: #F6F629;
+    border-radius: 999px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 900ms ease;
+}
+
+.about-text.aos-animate h1::after {
+    transform: scaleX(1);
 }
 
 .about-text p {
     font-family: nourd_bold;
     color: white;
     font-size: 120%;
+    max-width: 1130px;
+    text-align: justify;
+}
+
+@media screen and (max-width: 600px) {
+    .about-text h1 {
+        gap: 12px;
+    }
+
+    .about-text h1::after {
+        flex-basis: 90px;
+    }
 }
 
 /* Hobbies Section -------------------------------*/

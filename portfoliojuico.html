@@ -31,8 +31,8 @@
     <section class= "heroimage" id="heroimage">
         <div class="image" id="image" data-aos="fade-up">
             <div class="herodescription">
-                <p><span class="heroyellow yellow1">HELLO</span>
-                    <span class="herowhite white1">,&nbsp;MY NAME IS</span></p>
+                <p><span class="heroyellow yellow1">HELLO,</span>
+                    <span class="herowhite white1">&nbsp;MY NAME IS</span></p>
 
                 <p><span class= "heroyellow yellow2">Christian Earl</span></p>
 
@@ -49,10 +49,9 @@
     <!-- About Me Section -->
     <section class= "about" id="about">
         <div class="about-main">
-            <img src="img/aboutpicture.jpg" alt="">
-            <div class="about-text" data-aos="fade-left">
-            <h1>About Me</h1>
-                <p>I'm Christian Earl Juico, a highly motivated and versatile professional with a Bachelor's degree in Information Technology. I'm passionate about technology and creative design, and I bring a unique blend of skills as a programmer, graphic designer, and database designer. With a keen eye for detail and a commitment to delivering exceptional results, I thrive on turning ideas into reality through innovative solutions.</p>
+            <div class="about-text" data-aos="fade-up">
+                <h1>About Me</h1>
+                <p>I'm Christian Earl Juico, passionate about web development and creative design. I enjoy transforming ideas into functional, user-friendly websites while combining technical knowledge with creativity to build meaningful digital experiences. With a keen eye for detail and a commitment to continuous learning, I strive to deliver high-quality work, embrace new challenges, and create solutions that are both practical and visually engaging.</p>
             </div>
         </div>
     </section>
@@ -103,6 +102,18 @@
       
     <!-- Scripts -->
     <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        const savedScroll = sessionStorage.getItem('portfolioScrollPos');
+        const restoreScroll = () => {
+            if (savedScroll !== null) {
+                window.scrollTo(0, parseInt(savedScroll, 10));
+                sessionStorage.removeItem('portfolioScrollPos');
+            }
+        };
+
         const navLinks = document.querySelectorAll('.nav a');
         const header = document.querySelector('header');
         const sections = [...navLinks]
@@ -113,7 +124,7 @@
             header.classList.toggle('scrolled', window.scrollY > 10);
 
             let currentSection = sections[0];
-            const scrollPosition = window.scrollY + 140;
+            const scrollPosition = window.scrollY + 300;
             const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
 
             sections.forEach(section => {
@@ -149,6 +160,17 @@
 
         window.addEventListener('scroll', setActiveLink);
         setActiveLink();
+
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('portfolioScrollPos', window.scrollY);
+        });
+
+        window.addEventListener('load', () => {
+            restoreScroll();
+            setActiveLink();
+            setTimeout(restoreScroll, 0);
+            setTimeout(restoreScroll, 300);
+        });
     </script> 
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
