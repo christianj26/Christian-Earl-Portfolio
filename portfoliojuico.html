@@ -58,45 +58,20 @@
 
     <!-- Contact Me Section -->
     <section class= "contact" id="contact">
-           <h1 data-aos="fade-left">Contact Me</h1>
+           <h1 data-aos="fade-up">Contact</h1>
 
-           <p data-aos="fade-left">+63 987-258-2552<br>
-              +63 579-698-8969
-        </p>
+           <hr class="contact-divider">
 
-        <div class="socialicons" data-aos="fade-left">
-           <a href="https://www.facebook.com/" class="sbtn aFacebook" target="_blank">
-                <img src="img/icons/iconfacebook.png" alt="">
-           </a>
-
-           <a href="https://www.instagram.com/" class="sbtn aInstagram" target="_blank">
-                <img src="img/icons/iconinstagram.png" alt="">
-            </a>
-
-            <a href="https://twitter.com/" class="sbtn aTwitter" target="_blank">
-                <img src="img/icons/iconx.png" alt="">
-            </a>
-
-            <a href="https://www.linkedin.com/" class="sbtn aLinkedin" target="_blank">
-                <img src="img/icons/iconlinkedin.png" alt="">
-            </a>
-        </div>
-
-            <form class="form-input">
-                <input class="in ione" type="text" id="fname" name="fname" placeholder="Enter your Name" required>
-                <br>
-                <input class="in itwo" type="text" id="lname" name="lname" placeholder="Enter a valid email address" required>
-                <br>
-                <input class="in ithree" type="text" id="lname" name="lname" placeholder="Message" required>
-
-                <button class="btnsubmit">SUBMIT</button>
-            </form>
+           <div class="contact-info" data-aos="fade-up">
+                <span class="contact-phone">+63 947 540 9601</span>
+                <span class="contact-email">christianearljuico@gmail.com</span>
+           </div>
 
     </section> 
 
       <!-- Footer Section -->
       <footer>
-            <p>© 2023 - 2024  Christian Earl Santos Juico | All Rights Reserved</p>
+            <p>© 2026 Christian Earl Juico. All rights reserved.</p>
       </footer>
 
       
@@ -180,6 +155,24 @@
         duration: 3000,
         once: true,
       });
+    </script>
+
+    <script>
+        const contactDivider = document.querySelector('.contact-divider');
+        if (contactDivider && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            observer.observe(contactDivider);
+        } else if (contactDivider) {
+            contactDivider.classList.add('in-view');
+        }
     </script>
 
 </body>
