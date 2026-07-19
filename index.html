@@ -63,7 +63,7 @@
         <div class="projects-grid">
             <article class="project-card" data-aos="fade-up" data-project="ehiram">
                 <div class="project-thumb">
-                    <img src="img/projects/portfolio.png" alt="E-HIRAM">
+                <img src="projects/projects-thumbnail/ehiram.png" alt="E-HIRAM">
                 </div>
                 <div class="project-meta">
                     <h2>E-HIRAM</h2>
@@ -74,7 +74,7 @@
 
             <article class="project-card" data-aos="fade-up" data-project="hrmanagement">
                 <div class="project-thumb">
-                    <img src="img/projects/brandkit.png" alt="HR Management System">
+                    <img src="projects/projects-thumbnail/hr.png" alt="HR Management System">
                 </div>
                 <div class="project-meta">
                     <h2>HR Management System</h2>
@@ -85,7 +85,7 @@
 
             <article class="project-card" data-aos="fade-up" data-project="smssystem">
                 <div class="project-thumb">
-                    <img src="img/projects/dashboard.png" alt="Stock Monitoring System">
+                    <img src="projects/projects-thumbnail/sms.png" alt="Stock Monitoring System">
                 </div>
                 <div class="project-meta">
                     <h2>Stock Monitoring System</h2>
@@ -108,6 +108,23 @@
            </div>
 
     </section> 
+
+    <!-- Project Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+            <div class="modal-thumb">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-body">
+                <span class="modal-tag" id="modalTag"></span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDesc"></p>
+                <ul class="modal-points" id="modalPoints"></ul>
+                <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener">View Live</a>
+            </div>
+        </div>
+    </div>
 
       <!-- Footer Section -->
       <footer>
@@ -198,12 +215,97 @@
     </script>
 
     <script>
+        const projectData = {
+            ehiram: {
+                title: "E-HIRAM",
+                tag: "Best Capstone Project Awardee",
+                image: "projects/projects-content-img/ehiram.png",
+                desc: "Provides a centralized, web-based platform for borrowing, returning, inventory and tracking of equipment. Built to replace manual logbooks with a reliable, searchable system for schools and organizations.",
+                points: [
+                    "Equipment borrowing and returning with recorded transactions",
+                    "Real-time inventory and stock tracking",
+                    "User accounts with role-based access",
+                    "Reports and audit logs for accountability"
+                ],
+                link: "#"
+            },
+            hrmanagement: {
+                title: "HR Management System",
+                tag: "Web Development Project",
+                image: "projects/projects-content-img/hr.png",
+                desc: "Streamlines employee information management, file submission, and HR operations. A centralized system that reduces paperwork and speeds up routine human-resource tasks.",
+                points: [
+                    "Employee records and profile management",
+                    "Digital file and document submission",
+                    "Leave and attendance tracking",
+                    "Admin dashboard for HR operations"
+                ],
+                link: "#"
+            },
+            smssystem: {
+                title: "Stock Monitoring System",
+                tag: "Web Development Project",
+                image: "projects/projects-content-img/sms.png",
+                desc: "Provides efficient tracking and management of medical supplies and inventory. Designed to help clinics and facilities avoid stockouts and maintain accurate supply levels.",
+                points: [
+                    "Medical supply inventory tracking",
+                    "Low-stock and expiry alerts",
+                    "Category and location organization",
+                    "Usage and restock history logs"
+                ],
+                link: "#"
+            }
+        };
+
+        const overlay = document.getElementById('modalOverlay');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalTag = document.getElementById('modalTag');
+        const modalPoints = document.getElementById('modalPoints');
+        const modalLink = document.getElementById('modalLink');
+        const modalClose = document.getElementById('modalClose');
+
+        const openModal = (key) => {
+            const data = projectData[key];
+            if (!data) return;
+
+            modalImage.src = data.image;
+            modalImage.alt = data.title;
+            modalTitle.textContent = data.title;
+            modalDesc.textContent = data.desc;
+            modalTag.textContent = data.tag;
+            modalLink.href = data.link;
+
+            modalPoints.innerHTML = '';
+            data.points.forEach(point => {
+                const li = document.createElement('li');
+                li.textContent = point;
+                modalPoints.appendChild(li);
+            });
+
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeModal = () => {
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        };
+
         const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach(card => {
             card.addEventListener('click', () => {
-                const key = card.getAttribute('data-project');
-                window.open('project-modal.html?project=' + encodeURIComponent(key), '_blank');
+                openModal(card.getAttribute('data-project'));
             });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
 
         const contactDivider = document.querySelector('.contact-divider');

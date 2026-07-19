@@ -750,3 +750,143 @@ footer p {
     font-size: 90%;
     color: #F6F629;
 }
+
+/* Project Modal -------------------------------*/
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease, visibility 300ms ease;
+    z-index: 1000;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    width: 720px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    position: relative;
+    transform: translateY(30px) scale(0.97);
+    transition: transform 300ms ease;
+}
+
+.modal-overlay.open .modal {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background-color: #F6F629;
+    color: #000;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.modal-thumb {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+    background-color: #000;
+}
+
+.modal-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-body {
+    padding: 28px 32px 36px;
+    text-align: left;
+}
+
+.modal-tag {
+    display: inline-block;
+    font-family: dmsans_regular, sans-serif;
+    font-size: 80%;
+    color: #F6F629;
+    border: 1px solid #F6F629;
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin-bottom: 16px;
+}
+
+.modal-body h2 {
+    font-family: nourd_bold, sans-serif;
+    color: #F6F629;
+    font-size: 200%;
+    margin-bottom: 14px;
+}
+
+.modal-body p {
+    font-family: nourd_bold, sans-serif;
+    color: #ffffff;
+    font-size: 110%;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.modal-points {
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+.modal-points li {
+    font-family: nourd_bold, sans-serif;
+    color: #cfcfcf;
+    font-size: 100%;
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.modal-points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #F6F629;
+}
+
+.modal-link {
+    display: inline-block;
+    font-family: nourd_heavy, sans-serif;
+    letter-spacing: 2px;
+    text-decoration: none;
+    background-color: #F6F629;
+    color: #000;
+    padding: 12px 28px;
+    border-radius: 999px;
+    transition: transform 300ms ease;
+}
+
+.modal-link:hover {
+    transform: scale(1.05);
+}
