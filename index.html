@@ -79,7 +79,7 @@
                 <div class="project-meta">
                     <h2>HR Management System</h2>
                     <p>Streamlines employee information management, file submission, and HR operations.</p>
-                    <span class="project-tag">Web Development Project</span>
+                    <span class="project-tag">College Project</span>
                 </div>
             </article>
 
@@ -90,7 +90,7 @@
                 <div class="project-meta">
                     <h2>Stock Monitoring System</h2>
                     <p>Provides efficient tracking and management of medical supplies and inventory.</p>
-                    <span class="project-tag">Web Development Project</span>
+                    <span class="project-tag">College Project</span>
                 </div>
             </article>
         </div>
@@ -113,15 +113,21 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-            <div class="modal-thumb">
-                <img id="modalImage" src="" alt="">
-            </div>
             <div class="modal-body">
-                <span class="modal-tag" id="modalTag"></span>
-                <h2 id="modalTitle"></h2>
+                <div class="modal-heading">
+                    <h2 id="modalTitle"></h2>
+                    <span class="modal-tag" id="modalTag"></span>
+                </div>
                 <p id="modalDesc"></p>
-                <ul class="modal-points" id="modalPoints"></ul>
-                <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener">View Live</a>
+
+                <div class="modal-carousel">
+                    <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous">&#8249;</button>
+                    <div class="carousel-stage">
+                        <img id="carouselImage" src="" alt="">
+                        <span class="carousel-label" id="carouselLabel"></span>
+                    </div>
+                    <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next">&#8250;</button>
+                </div>
             </div>
         </div>
     </div>
@@ -219,78 +225,89 @@
             ehiram: {
                 title: "E-HIRAM",
                 tag: "Best Capstone Project Awardee",
-                image: "projects/projects-content-img/ehiram.png",
-                desc: "Provides a centralized, web-based platform for borrowing, returning, inventory and tracking of equipment. Built to replace manual logbooks with a reliable, searchable system for schools and organizations.",
-                points: [
-                    "Equipment borrowing and returning with recorded transactions",
-                    "Real-time inventory and stock tracking",
-                    "User accounts with role-based access",
-                    "Reports and audit logs for accountability"
-                ],
-                link: "#"
+                desc: "Provides a centralized, web-based platforms for borrowing, returning, inventory and tracking of equipment.",
+                gallery: [
+                    { src: "projects/projects-content-img/ehiram-1.png", label: "Login Page" },
+                    { src: "projects/projects-content-img/ehiram-2.png", label: "Borrow Equipment Form" },
+                    { src: "projects/projects-content-img/ehiram-3.png", label: "Inventory Dashboard" }
+                ]
             },
             hrmanagement: {
                 title: "HR Management System",
-                tag: "Web Development Project",
-                image: "projects/projects-content-img/hr.png",
-                desc: "Streamlines employee information management, file submission, and HR operations. A centralized system that reduces paperwork and speeds up routine human-resource tasks.",
-                points: [
-                    "Employee records and profile management",
-                    "Digital file and document submission",
-                    "Leave and attendance tracking",
-                    "Admin dashboard for HR operations"
-                ],
-                link: "#"
+                tag: "College Project",
+                desc: "Streamlines employee information management, file submission, and HR operations.",
+                gallery: [
+                    { src: "projects/projects-content-img/hr-1.png", label: "Employee Records" },
+                    { src: "projects/projects-content-img/hr-2.png", label: "File Submission" },
+                    { src: "projects/projects-content-img/hr-3.png", label: "HR Dashboard" }
+                ]
             },
             smssystem: {
                 title: "Stock Monitoring System",
-                tag: "Web Development Project",
-                image: "projects/projects-content-img/sms.png",
-                desc: "Provides efficient tracking and management of medical supplies and inventory. Designed to help clinics and facilities avoid stockouts and maintain accurate supply levels.",
-                points: [
-                    "Medical supply inventory tracking",
-                    "Low-stock and expiry alerts",
-                    "Category and location organization",
-                    "Usage and restock history logs"
-                ],
-                link: "#"
+                tag: "College Project",
+                desc: "Provides efficient tracking and management of medical supplies and inventory.",
+                gallery: [
+                    { src: "projects/projects-content-img/sms-1.png", label: "Supply List" },
+                    { src: "projects/projects-content-img/sms-2.png", label: "Low Stock Alert" },
+                    { src: "projects/projects-content-img/sms-3.png", label: "Restock History" }
+                ]
             }
         };
 
         const overlay = document.getElementById('modalOverlay');
-        const modalImage = document.getElementById('modalImage');
         const modalTitle = document.getElementById('modalTitle');
         const modalDesc = document.getElementById('modalDesc');
         const modalTag = document.getElementById('modalTag');
-        const modalPoints = document.getElementById('modalPoints');
-        const modalLink = document.getElementById('modalLink');
+        const carouselImage = document.getElementById('carouselImage');
+        const carouselLabel = document.getElementById('carouselLabel');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
         const modalClose = document.getElementById('modalClose');
+
+        let currentGallery = [];
+        let currentIndex = 0;
+
+        const showSlide = () => {
+            const slide = currentGallery[currentIndex];
+            if (!slide) return;
+            carouselImage.src = slide.src;
+            carouselImage.alt = slide.label;
+            carouselLabel.textContent = slide.label;
+        };
 
         const openModal = (key) => {
             const data = projectData[key];
             if (!data) return;
 
-            modalImage.src = data.image;
-            modalImage.alt = data.title;
             modalTitle.textContent = data.title;
             modalDesc.textContent = data.desc;
             modalTag.textContent = data.tag;
-            modalLink.href = data.link;
 
-            modalPoints.innerHTML = '';
-            data.points.forEach(point => {
-                const li = document.createElement('li');
-                li.textContent = point;
-                modalPoints.appendChild(li);
-            });
+            currentGallery = data.gallery || [];
+            currentIndex = 0;
+            showSlide();
 
             overlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            document.documentElement.style.scrollbarGutter = 'stable';
         };
+
+        carouselPrev.addEventListener('click', () => {
+            if (!currentGallery.length) return;
+            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            showSlide();
+        });
+
+        carouselNext.addEventListener('click', () => {
+            if (!currentGallery.length) return;
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            showSlide();
+        });
 
         const closeModal = () => {
             overlay.classList.remove('open');
-            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            document.documentElement.style.scrollbarGutter = '';
         };
 
         const projectCards = document.querySelectorAll('.project-card');
@@ -305,7 +322,17 @@
             if (e.target === overlay) closeModal();
         });
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Escape') {
+                closeModal();
+                return;
+            }
+            if (overlay.classList.contains('open')) {
+                if (e.key === 'ArrowLeft') {
+                    carouselPrev.click();
+                } else if (e.key === 'ArrowRight') {
+                    carouselNext.click();
+                }
+            }
         });
 
         const contactDivider = document.querySelector('.contact-divider');
