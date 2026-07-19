@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Earl's Portfolio</title>
+    <link rel="stylesheet" href="portfoliojuicostyle.css">
+
+    <link rel="stylesheet" href="media-query/1920x1080.css">
+    <link rel="stylesheet" href="media-query/2560x1440.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Christian Earl</h1>
+        </div>
+
+        <nav>
+            <ul class="nav">
+                <li><a href="#image" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class= "heroimage" id="heroimage">
+        <div class="image" id="image" data-aos="fade-up">
+            <div class="herodescription">
+                <p><span class="heroyellow yellow1">HELLO,</span>
+                    <span class="herowhite white1">&nbsp;MY NAME IS</span></p>
+
+                <p><span class= "heroyellow yellow2">Christian Earl</span></p>
+
+                <p><span class="heroyellow yellow3">Graphic Designer</span>
+                    <span class="herowhite white2">&nbsp;and&nbsp;</span>
+                    <span class="heroyellow yellow4">Web Developer</span></p>
+            </div>
+            <div class="hero-photo" >
+                <img src="img/herosection_solopic.JPG" alt="Christian Earl Juico">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class= "about" id="about">
+        <div class="about-main">
+            <div class="about-text" data-aos="fade-up">
+                <h1>About Me</h1>
+                <p>I'm Christian Earl Juico, passionate about web development and creative design. I enjoy transforming ideas into functional, user-friendly websites while combining technical knowledge with creativity to build meaningful digital experiences. With a keen eye for detail and a commitment to continuous learning, I strive to deliver high-quality work, embrace new challenges, and create solutions that are both practical and visually engaging.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class= "projects" id="projects">
+        <h1 data-aos="fade-up">Projects</h1>
+
+        <div class="projects-grid">
+            <article class="project-card" data-aos="fade-up" data-project="ehiram">
+                <div class="project-thumb">
+                    <img src="img/projects/portfolio.png" alt="E-HIRAM">
+                </div>
+                <div class="project-meta">
+                    <h2>E-HIRAM</h2>
+                    <p>Provides a centralized, web-based platforms for borrowing, returning, inventory and tracking of equipment.</p>
+                    <span class="project-tag">Best Capstone Project Awardee</span>
+                </div>
+            </article>
+
+            <article class="project-card" data-aos="fade-up" data-project="hrmanagement">
+                <div class="project-thumb">
+                    <img src="img/projects/brandkit.png" alt="HR Management System">
+                </div>
+                <div class="project-meta">
+                    <h2>HR Management System</h2>
+                    <p>Streamlines employee information management, file submission, and HR operations.</p>
+                    <span class="project-tag">Web Development Project</span>
+                </div>
+            </article>
+
+            <article class="project-card" data-aos="fade-up" data-project="smssystem">
+                <div class="project-thumb">
+                    <img src="img/projects/dashboard.png" alt="Stock Monitoring System">
+                </div>
+                <div class="project-meta">
+                    <h2>Stock Monitoring System</h2>
+                    <p>Provides efficient tracking and management of medical supplies and inventory.</p>
+                    <span class="project-tag">Web Development Project</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section class= "contact" id="contact">
+           <h1 data-aos="fade-up">Contact</h1>
+
+           <hr class="contact-divider">
+
+           <div class="contact-info" data-aos="fade-up">
+                <span class="contact-phone">+63 947 540 9601</span>
+                <span class="contact-email">christianearljuico@gmail.com</span>
+           </div>
+
+    </section> 
+
+      <!-- Footer Section -->
+      <footer>
+            <p>© 2026 Christian Earl Juico. All rights reserved.</p>
+      </footer>
+
+      
+    <!-- Scripts -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        const savedScroll = sessionStorage.getItem('portfolioScrollPos');
+        const restoreScroll = () => {
+            if (savedScroll !== null) {
+                window.scrollTo(0, parseInt(savedScroll, 10));
+                sessionStorage.removeItem('portfolioScrollPos');
+            }
+        };
+
+        const navLinks = document.querySelectorAll('.nav a');
+        const header = document.querySelector('header');
+        const sections = [...navLinks]
+            .map(link => document.getElementById(link.getAttribute('href').substring(1)))
+            .filter(Boolean);
+
+        const setActiveLink = () => {
+            header.classList.toggle('scrolled', window.scrollY > 10);
+
+            let currentSection = sections[0];
+            const scrollPosition = window.scrollY + 300;
+            const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+
+            sections.forEach(section => {
+                if (scrollPosition >= section.offsetTop) {
+                    currentSection = section;
+                }
+            });
+
+            if (isAtBottom) {
+                currentSection = sections[sections.length - 1];
+            }
+
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${currentSection.id}`);
+            });
+        };
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', setActiveLink);
+        setActiveLink();
+
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('portfolioScrollPos', window.scrollY);
+        });
+
+        window.addEventListener('load', () => {
+            restoreScroll();
+            setActiveLink();
+            setTimeout(restoreScroll, 0);
+            setTimeout(restoreScroll, 300);
+        });
+    </script> 
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+      AOS.init({
+        duration: 3000,
+        once: true,
+      });
+    </script>
+
+    <script>
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const key = card.getAttribute('data-project');
+                window.open('project-modal.html?project=' + encodeURIComponent(key), '_blank');
+            });
+        });
+
+        const contactDivider = document.querySelector('.contact-divider');
+        if (contactDivider && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            observer.observe(contactDivider);
+        } else if (contactDivider) {
+            contactDivider.classList.add('in-view');
+        }
+    </script>
+
+</body>
+</html>

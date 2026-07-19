@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <link rel="stylesheet" href="modalstyle.css">
+</head>
+<body>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+            <div class="modal-thumb">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-body">
+                <span class="modal-tag" id="modalTag"></span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDesc"></p>
+                <ul class="modal-points" id="modalPoints"></ul>
+                <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener">View Live</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="modal.js"></script>
+</body>
+</html>
