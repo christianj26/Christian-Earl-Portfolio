@@ -869,7 +869,7 @@ footer p {
 .carousel-stage {
     position: relative;
     flex: 1;
-    height: 420px;
+    aspect-ratio: 2 / 1;
     border-radius: 12px;
     overflow: hidden;
     background-color: #000;
