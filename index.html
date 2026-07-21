@@ -166,6 +166,32 @@
             });
         };
 
+        const scrollToCenter = (section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            const headerHeight = 75;
+
+            let scrollToPos;
+
+            if (sectionHeight >= viewportHeight) {
+                // Section is taller than viewport — scroll to its top minus header offset
+                scrollToPos = sectionTop - headerHeight;
+            } else {
+                // Center the section in the viewport
+                scrollToPos = sectionTop - (viewportHeight / 2) + (sectionHeight / 2);
+            }
+
+            // Clamp to valid range
+            scrollToPos = Math.max(0, scrollToPos);
+            scrollToPos = Math.min(scrollToPos, document.documentElement.scrollHeight - viewportHeight);
+
+            window.scrollTo({
+                top: scrollToPos,
+                behavior: 'smooth'
+            });
+        };
+
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -173,11 +199,7 @@
                 const targetSection = document.getElementById(targetId);
                 
                 if (targetSection) {
-
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
+                    scrollToCenter(targetSection);
                 }
             });
         });
