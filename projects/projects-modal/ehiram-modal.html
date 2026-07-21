@@ -4,28 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-HIRAM - Project Details</title>
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../../modalstyle.css">
 </head>
 <body>
-    <div class="modal-overlay open">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <a class="modal-close" href="../../index.html" aria-label="Close">&times;</a>
-            <div class="modal-thumb">
-                <img src="../projects-content-img/ehiram.png" alt="E-HIRAM">
+    <div class="modal-body">
+        <div class="modal-heading">
+            <h2 id="modalTitle">E-HIRAM</h2>
+            <span class="modal-tag">Best Capstone Project Awardee</span>
+        </div>
+        <p>E-HIRAM: A Web-based Electronic Hardware Inventory, Request, and Asset Management System for the Management Information System Department of Subic Bay Metropolitan Authority. Provides a centralized, web-based platforms for borrowing, returning, inventory and tracking of equipment.</p>
+
+        <div class="modal-carousel">
+            <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous">&#8249;</button>
+            <div class="carousel-stage">
+                <img id="carouselImage" src="../projects-content-img/EHIRAM/EHIRAM_1.png" alt="Login Page">
+                <span class="carousel-label" id="carouselLabel">Login Page</span>
             </div>
-            <div class="modal-body">
-                <span class="modal-tag">Best Capstone Project Awardee</span>
-                <h2 id="modalTitle">E-HIRAM</h2>
-                <p>Provides a centralized, web-based platform for borrowing, returning, inventory and tracking of equipment. Built to replace manual logbooks with a reliable, searchable system for schools and organizations.</p>
-                <ul class="modal-points">
-                    <li>Equipment borrowing and returning with recorded transactions</li>
-                    <li>Real-time inventory and stock tracking</li>
-                    <li>User accounts with role-based access</li>
-                    <li>Reports and audit logs for accountability</li>
-                </ul>
-                <a class="modal-link" href="#" target="_blank" rel="noopener">View Live</a>
-            </div>
+            <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next">&#8250;</button>
         </div>
     </div>
+
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+        <img id="lightboxImage" src="" alt="">
+        <span class="carousel-label" id="lightboxLabel"></span>
+    </div>
+
+    <script>
+        const gallery = [
+            { src: "../projects-content-img/EHIRAM/EHIRAM_1.png", label: "Login Page" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_2.png", label: "Signup Page" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_3.png", label: "Signup Successful Message (Borrower Only)" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_4.png", label: "Admin Dashboard Page" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_5.png", label: "Borrow Request Page (Pending Request Actions)" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_6.png", label: "Acknowledgement Confirmation Tab and Release Actions" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_7.png", label: "Signature Window for Equipment Release" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_8.png", label: "Equipment Page (Equipment Category List)" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_9.png", label: "Calendar Page" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_10.png", label: "Trends and Analysis Dashboard Widgets" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_11.png", label: "Agent Dashboard" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_12.png", label: "Borrower Dashboard" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_13.png", label: "Borrower Equipment Page (Submit Request)" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_14.png", label: "My Borrowings Page (Borrower)" },
+            { src: "../projects-content-img/EHIRAM/EHIRAM_15.png", label: "Account Settings (Borrower)" }
+        ];
+
+        const carouselImage = document.getElementById('carouselImage');
+        const carouselLabel = document.getElementById('carouselLabel');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const lightboxOverlay = document.getElementById('lightboxOverlay');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxLabel = document.getElementById('lightboxLabel');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        let currentIndex = 0;
+
+        const showSlide = () => {
+            const slide = gallery[currentIndex];
+            if (!slide) return;
+            carouselImage.src = slide.src;
+            carouselImage.alt = slide.label;
+            carouselLabel.textContent = slide.label;
+        };
+
+        carouselPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+            showSlide();
+        });
+
+        carouselNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % gallery.length;
+            showSlide();
+        });
+
+        const openLightbox = () => {
+            const slide = gallery[currentIndex];
+            if (!slide) return;
+            lightboxImage.src = slide.src;
+            lightboxImage.alt = slide.label;
+            lightboxLabel.textContent = slide.label;
+            lightboxOverlay.classList.add('open');
+        };
+
+        const closeLightbox = () => {
+            lightboxOverlay.classList.remove('open');
+        };
+
+        carouselImage.addEventListener('click', openLightbox);
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', (e) => {
+            if (e.target === lightboxOverlay) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (lightboxOverlay.classList.contains('open')) {
+                    closeLightbox();
+                }
+            }
+            if (e.key === 'ArrowLeft') {
+                carouselPrev.click();
+            } else if (e.key === 'ArrowRight') {
+                carouselNext.click();
+            }
+        });
+    </script>
 </body>
 </html>

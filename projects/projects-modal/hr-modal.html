@@ -4,28 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR Management System - Project Details</title>
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../../modalstyle.css">
 </head>
 <body>
-    <div class="modal-overlay open">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <a class="modal-close" href="../../index.html" aria-label="Close">&times;</a>
-            <div class="modal-thumb">
-                <img src="../projects-content-img/hr.png" alt="HR Management System">
+    <div class="modal-body">
+        <div class="modal-heading">
+            <h2 id="modalTitle">HR Management System</h2>
+            <span class="modal-tag">College Project</span>
+        </div>
+        <p>Streamlines employee information management, file submission, and HR operations.</p>
+
+        <div class="modal-carousel">
+            <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous">&#8249;</button>
+            <div class="carousel-stage">
+                <img id="carouselImage" src="../projects-content-img/HRMANAGEMENT/HRMANAGER1.png" alt="Dashboard (Manager)">
+                <span class="carousel-label" id="carouselLabel">Dashboard (Manager)</span>
             </div>
-            <div class="modal-body">
-                <span class="modal-tag">Web Development Project</span>
-                <h2 id="modalTitle">HR Management System</h2>
-                <p>Streamlines employee information management, file submission, and HR operations. A centralized system that reduces paperwork and speeds up routine human-resource tasks.</p>
-                <ul class="modal-points">
-                    <li>Employee records and profile management</li>
-                    <li>Digital file and document submission</li>
-                    <li>Leave and attendance tracking</li>
-                    <li>Admin dashboard for HR operations</li>
-                </ul>
-                <a class="modal-link" href="#" target="_blank" rel="noopener">View Live</a>
-            </div>
+            <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next">&#8250;</button>
         </div>
     </div>
+
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+        <img id="lightboxImage" src="" alt="">
+        <span class="carousel-label" id="lightboxLabel"></span>
+    </div>
+
+    <script>
+        const gallery = [
+            { src: "../projects-content-img/HRMANAGEMENT/HRMANAGER1.png", label: "Dashboard (Manager)" },
+            { src: "../projects-content-img/HRMANAGEMENT/HRMANAGER2.png", label: "Ranking Records (Manager)" },
+            { src: "../projects-content-img/HRMANAGEMENT/HRMANAGER3.png", label: "Employee Records (Manager)" },
+            { src: "../projects-content-img/HRMANAGEMENT/HRMANAGER4.png", label: "Job & Department (Manager)" },
+            { src: "../projects-content-img/HRMANAGEMENT/HREMPLOYEE1.png", label: "Dashboard (Employee)" },
+            { src: "../projects-content-img/HRMANAGEMENT/HREMPLOYEE2.png", label: "Document Submission (Employee)" }
+        ];
+
+        const carouselImage = document.getElementById('carouselImage');
+        const carouselLabel = document.getElementById('carouselLabel');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const lightboxOverlay = document.getElementById('lightboxOverlay');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxLabel = document.getElementById('lightboxLabel');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        let currentIndex = 0;
+
+        const showSlide = () => {
+            const slide = gallery[currentIndex];
+            if (!slide) return;
+            carouselImage.src = slide.src;
+            carouselImage.alt = slide.label;
+            carouselLabel.textContent = slide.label;
+        };
+
+        carouselPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+            showSlide();
+        });
+
+        carouselNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % gallery.length;
+            showSlide();
+        });
+
+        const openLightbox = () => {
+            const slide = gallery[currentIndex];
+            if (!slide) return;
+            lightboxImage.src = slide.src;
+            lightboxImage.alt = slide.label;
+            lightboxLabel.textContent = slide.label;
+            lightboxOverlay.classList.add('open');
+        };
+
+        const closeLightbox = () => {
+            lightboxOverlay.classList.remove('open');
+        };
+
+        carouselImage.addEventListener('click', openLightbox);
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', (e) => {
+            if (e.target === lightboxOverlay) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (lightboxOverlay.classList.contains('open')) {
+                    closeLightbox();
+                }
+            }
+            if (e.key === 'ArrowLeft') {
+                carouselPrev.click();
+            } else if (e.key === 'ArrowRight') {
+                carouselNext.click();
+            }
+        });
+    </script>
 </body>
 </html>

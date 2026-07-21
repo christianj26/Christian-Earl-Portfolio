@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christian Earl's Portfolio</title>
-    <link rel="stylesheet" href="portfoliojuicostyle.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modalstyle.css">
 
     <link rel="stylesheet" href="media-query/1920x1080.css">
     <link rel="stylesheet" href="media-query/2560x1440.css">
@@ -74,7 +75,7 @@
 
             <article class="project-card" data-aos="fade-up" data-project="hrmanagement">
                 <div class="project-thumb">
-                    <img src="projects/projects-thumbnail/hr.png" alt="HR Management System">
+                    <img src="projects/projects-thumbnail/HR_THUMBNAIL.png" alt="HR Management System">
                 </div>
                 <div class="project-meta">
                     <h2>HR Management System</h2>
@@ -85,7 +86,7 @@
 
             <article class="project-card" data-aos="fade-up" data-project="smssystem">
                 <div class="project-thumb">
-                    <img src="projects/projects-thumbnail/sms.png" alt="Stock Monitoring System">
+                    <img src="projects/projects-thumbnail/SMS_THUMBNAIL.png" alt="Stock Monitoring System">
                 </div>
                 <div class="project-meta">
                     <h2>Stock Monitoring System</h2>
@@ -113,22 +114,7 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-            <div class="modal-body">
-                <div class="modal-heading">
-                    <h2 id="modalTitle"></h2>
-                    <span class="modal-tag" id="modalTag"></span>
-                </div>
-                <p id="modalDesc"></p>
-
-                <div class="modal-carousel">
-                    <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous">&#8249;</button>
-                    <div class="carousel-stage">
-                        <img id="carouselImage" src="" alt="">
-                        <span class="carousel-label" id="carouselLabel"></span>
-                    </div>
-                    <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next">&#8250;</button>
-                </div>
-            </div>
+            <iframe id="modalFrame" class="modal-frame" src="" frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
 
@@ -221,108 +207,81 @@
     </script>
 
     <script>
-        const projectData = {
-            ehiram: {
-                title: "E-HIRAM",
-                tag: "Best Capstone Project Awardee",
-                desc: "Provides a centralized, web-based platforms for borrowing, returning, inventory and tracking of equipment.",
-                gallery: [
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_1.png", label: "Login Page" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_2.png", label: "Signup Page" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_3.png", label: "Signup Successful Message (Borrower Only)" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_4.png", label: "Admin Dashboard Page" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_5.png", label: "Borrow Request Page (Pending Request Actions)" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_6.png", label: "Acknowledgement Confirmation Tab and Release Actions" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_7.png", label: "Signature Window for Equipment Release" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_8.png", label: "Equipment Page (Equipment Category List)" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_9.png", label: "Calendar Page" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_10.png", label: "Trends and Analysis Dashboard Widgets" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_11.png", label: "Agent Dashboard" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_12.png", label: "Borrower Dashboard" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_13.png", label: "Borrower Equipment Page (Submit Request)" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_14.png", label: "My Borrowings Page (Borrower)" },
-                    { src: "projects/projects-content-img/EHIRAM/EHIRAM_15.png", label: "Account Settings (Borrower)" }
-                ]
-            },
-            hrmanagement: {
-                title: "HR Management System",
-                tag: "College Project",
-                desc: "Streamlines employee information management, file submission, and HR operations.",
-                gallery: [
-                    { src: "projects/projects-content-img/hr-1.png", label: "Employee Records" },
-                    { src: "projects/projects-content-img/hr-2.png", label: "File Submission" },
-                    { src: "projects/projects-content-img/hr-3.png", label: "HR Dashboard" }
-                ]
-            },
-            smssystem: {
-                title: "Stock Monitoring System",
-                tag: "College Project",
-                desc: "Provides efficient tracking and management of medical supplies and inventory.",
-                gallery: [
-                    { src: "projects/projects-content-img/sms-1.png", label: "Supply List" },
-                    { src: "projects/projects-content-img/sms-2.png", label: "Low Stock Alert" },
-                    { src: "projects/projects-content-img/sms-3.png", label: "Restock History" }
-                ]
-            }
+        const projectCards = document.querySelectorAll('.project-card');
+        const modalMap = {
+            ehiram: 'projects/projects-modal/ehiram-modal.html',
+            hrmanagement: 'projects/projects-modal/hr-modal.html',
+            smssystem: 'projects/projects-modal/sms-modal.html'
         };
-
         const overlay = document.getElementById('modalOverlay');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDesc = document.getElementById('modalDesc');
-        const modalTag = document.getElementById('modalTag');
-        const carouselImage = document.getElementById('carouselImage');
-        const carouselLabel = document.getElementById('carouselLabel');
-        const carouselPrev = document.getElementById('carouselPrev');
-        const carouselNext = document.getElementById('carouselNext');
+        const modalFrame = document.getElementById('modalFrame');
         const modalClose = document.getElementById('modalClose');
 
-        let currentGallery = [];
-        let currentIndex = 0;
-
-        const showSlide = () => {
-            const slide = currentGallery[currentIndex];
-            if (!slide) return;
-            carouselImage.src = slide.src;
-            carouselImage.alt = slide.label;
-            carouselLabel.textContent = slide.label;
-        };
-
         const openModal = (key) => {
-            const data = projectData[key];
-            if (!data) return;
-
-            modalTitle.textContent = data.title;
-            modalDesc.textContent = data.desc;
-            modalTag.textContent = data.tag;
-
-            currentGallery = data.gallery || [];
-            currentIndex = 0;
-            showSlide();
-
+            const url = modalMap[key];
+            if (!url) return;
+            modalFrame.src = url;
             overlay.classList.add('open');
             document.documentElement.style.overflow = 'hidden';
             document.documentElement.style.scrollbarGutter = 'stable';
         };
 
-        carouselPrev.addEventListener('click', () => {
-            if (!currentGallery.length) return;
-            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-            showSlide();
-        });
+        const sizeIframe = () => {
+            try {
+                const doc = modalFrame.contentDocument || modalFrame.contentWindow.document;
+                const images = doc.querySelectorAll('img');
+                let loaded = images.length === 0;
+                const checkDone = () => {
+                    if (!loaded) return;
+                    const bodyHeight = doc.body.scrollHeight;
+                    const htmlHeight = doc.documentElement.scrollHeight;
+                    const height = Math.max(bodyHeight, htmlHeight);
+                    modalFrame.style.height = height + 'px';
+                };
+                if (images.length === 0) {
+                    checkDone();
+                } else {
+                    let count = 0;
+                    images.forEach(img => {
+                        if (img.complete) {
+                            count++;
+                        } else {
+                            img.addEventListener('load', () => {
+                                count++;
+                                if (count === images.length) {
+                                    loaded = true;
+                                    checkDone();
+                                }
+                            });
+                            img.addEventListener('error', () => {
+                                count++;
+                                if (count === images.length) {
+                                    loaded = true;
+                                    checkDone();
+                                }
+                            });
+                        }
+                    });
+                    if (count === images.length) {
+                        loaded = true;
+                        checkDone();
+                    }
+                }
+            } catch (e) {
+                modalFrame.style.height = 'auto';
+            }
+        };
 
-        carouselNext.addEventListener('click', () => {
-            if (!currentGallery.length) return;
-            currentIndex = (currentIndex + 1) % currentGallery.length;
-            showSlide();
-        });
+        modalFrame.addEventListener('load', sizeIframe);
 
         const closeModal = () => {
             overlay.classList.remove('open');
+            modalFrame.src = '';
+            modalFrame.style.height = 'auto';
             document.documentElement.style.overflow = '';
             document.documentElement.style.scrollbarGutter = '';
         };
 
-        const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach(card => {
             card.addEventListener('click', () => {
                 openModal(card.getAttribute('data-project'));
@@ -334,17 +293,7 @@
             if (e.target === overlay) closeModal();
         });
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-                return;
-            }
-            if (overlay.classList.contains('open')) {
-                if (e.key === 'ArrowLeft') {
-                    carouselPrev.click();
-                } else if (e.key === 'ArrowRight') {
-                    carouselNext.click();
-                }
-            }
+            if (e.key === 'Escape') closeModal();
         });
 
         const contactDivider = document.querySelector('.contact-divider');
