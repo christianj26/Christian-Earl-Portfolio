@@ -1,0 +1,141 @@
+@media screen and (max-width: 768px) {
+
+    /* Hero Section -------------------------------*/
+    .heroimage {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .image {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 100px 20px 0 !important;
+        gap: 32px !important;
+        margin-bottom: 0 !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+    }
+
+    .herodescription {
+        order: 2;
+        text-align: center;
+    }
+
+    .hero-photo {
+        order: 1;
+        max-width: 280px;
+        width: 85% !important;
+        padding: 10px !important;
+        border: 2px solid #F6F629 !important;
+        border-radius: 16px !important;
+        background: #101010 !important;
+        flex: 0 0 auto !important;
+        box-shadow: none !important;
+    }
+
+    .hero-photo img {
+        border-radius: 8px !important;
+        aspect-ratio: 3 / 4 !important;
+    }
+
+    .yellow2 {
+        font-size: 42px;
+    }
+
+    .yellow3, .white2, .yellow4 {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    /* About Section -------------------------------*/
+    .about {
+        padding: 40px 20px !important;
+        min-height: auto !important;
+        margin-top: -420px !important;
+    }
+
+    .about-text h1 {
+        font-size: 150%;
+        gap: 10px;
+    }
+
+    .about-text h1::after {
+        flex-basis: 70px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* Hobbies Section -------------------------------*/
+    .hobbies {
+        height: auto;
+        min-height: 80vh;
+    }
+
+    .hobbies h1 {
+        font-size: 200%;
+        padding: 30px;
+    }
+
+    .hobbies-main {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .hob {
+        width: 250px;
+        height: auto;
+        min-height: 400px;
+        padding: 20px;
+    }
+
+    .hob h2 {
+        font-size: 22px;
+    }
+
+    /* Projects Section -------------------------------*/
+    .projects {
+        padding-top: 100px !important;
+    }
+
+    .projects h1 {
+        font-size: 180% !important;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 30px !important;
+        padding: 0 20px;
+    }
+
+    /* Contact Section -------------------------------*/
+    .contact {
+        height: auto;
+        min-height: 50vh;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 20px !important;
+    }
+
+    .contact h1 {
+        font-size: 200% !important;
+    }
+
+    .contact-phone,
+    .contact-email {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .contact-phone svg,
+    .contact-email svg {
+        width: 40px !important;
+        height: 40px !important;
+        padding: 8px !important;
+    }
+}

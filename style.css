@@ -135,6 +135,7 @@ a:hover {
 
 .heroimage {
     background: black;
+    margin: 0;
 }
 
 .image {
@@ -204,55 +205,13 @@ a:hover {
     letter-spacing: 5px;
 }
 
-@media screen and (max-width: 1100px) {
-    .image {
-        height: auto;
-        min-height: 100vh;
-        padding: 120px 35px 0;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 40px;
-    }
-
-    .yellow2 {
-        font-size: 70px;
-    }
-
-    .hero-photo {
-        width: 70%;
-        flex-basis: auto;
-        max-width: 380px;
-        align-self: center;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .image {
-        padding: 110px 20px 0;
-    }
-
-    .yellow2 {
-        font-size: 48px;
-    }
-
-    .yellow3, .white2, .yellow4 {
-        font-size: 16px;
-        letter-spacing: 2px;
-    }
-
-    .hero-photo {
-        width: 100%;
-    }
-}
-
-
 /* About Section -------------------------------*/
 .about {
     width: 100%;
     background-color: black;
     padding: 60px 0px;
     min-height: 600px;
+    margin: 0;
 }
 
 .about-main {
@@ -299,16 +258,6 @@ a:hover {
     font-size: 120%;
     max-width: 1130px;
     text-align: justify;
-}
-
-@media screen and (max-width: 600px) {
-    .about-text h1 {
-        gap: 12px;
-    }
-
-    .about-text h1::after {
-        flex-basis: 90px;
-    }
 }
 
 /* Hobbies Section -------------------------------*/
