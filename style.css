@@ -755,6 +755,10 @@ footer p {
         position: fixed;
     }
 
+    header.menu-open {
+        box-shadow: none;
+    }
+
     .nav-toggle {
         display: block;
         position: absolute;
@@ -777,9 +781,11 @@ footer p {
         max-height: 0;
         overflow: hidden;
         transition: max-height 300ms ease, padding 300ms ease;
+        display: none !important;
     }
 
     nav.open {
+        display: block !important;
         max-height: 400px;
         padding: 20px 0;
     }

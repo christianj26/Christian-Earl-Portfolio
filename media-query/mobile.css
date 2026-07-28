@@ -6,6 +6,13 @@
         padding-bottom: 0;
     }
 
+    nav.open {
+        max-height: 400px;
+        padding: 20px 0;
+        z-index: 1001;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+
     .image {
         height: auto !important;
         min-height: auto !important;
@@ -99,6 +106,7 @@
     /* Projects Section -------------------------------*/
     .projects {
         padding-top: 100px !important;
+        padding-bottom: 100px !important;
     }
 
     .projects h1 {
@@ -114,12 +122,13 @@
     /* Contact Section -------------------------------*/
     .contact {
         height: auto;
-        min-height: 50vh;
+        min-height: 35vh;
     }
 
     .contact-info {
         flex-direction: column;
         gap: 20px !important;
+        align-items: center;
     }
 
     .contact h1 {
@@ -128,14 +137,23 @@
 
     .contact-phone,
     .contact-email {
-        padding: 10px 20px;
-        font-size: 14px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 16px;
+        font-size: 12px;
+        white-space: nowrap;
+        width: 100%;
+        max-width: 280px;
     }
 
     .contact-phone svg,
     .contact-email svg {
-        width: 40px !important;
-        height: 40px !important;
-        padding: 8px !important;
+        width: 28px !important;
+        height: 28px !important;
+        padding: 4px !important;
+        margin: 0 !important;
+        flex-shrink: 0;
     }
 }
