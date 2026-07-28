@@ -268,6 +268,12 @@
                 closeMenu();
             }
         });
+
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+                closeMenu();
+            }
+        });
     </script> 
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
