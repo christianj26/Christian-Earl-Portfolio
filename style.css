@@ -237,6 +237,18 @@ a:hover {
     gap: 18px;
 }
 
+.about-text p.about-name {
+    display: inline-block;
+    font-family: nourd_bold;
+    font-size: 200%;
+    color: #F6F629;
+    border: 1px solid #F6F629;
+    border-radius: 999px;
+    padding: 8px 22px;
+    margin: 10px 0 20px;
+    text-align: left;
+}
+
 .about-text h1::after {
     content: "";
     flex: 0 1 180px;
@@ -519,7 +531,7 @@ a:hover {
 .projects {
     width: 100%;
     background-color: black;
-    padding: 5px 0px 270px;
+    padding: 80px 0px 270px;
     min-height: 35vh;
     display: flex;
     flex-direction: column;

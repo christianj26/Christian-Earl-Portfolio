@@ -67,6 +67,18 @@
         gap: 10px;
     }
 
+    .about-text p.about-name {
+        display: inline-block;
+        font-family: nourd_bold;
+        font-size: 22px;
+        color: #F6F629;
+        border: 1px solid #F6F629;
+        border-radius: 999px;
+        padding: 6px 16px;
+        margin: 8px 0 14px;
+        text-align: center;
+    }
+
     .about-text h1::after {
         flex-basis: 70px;
     }
